@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "41343220",
+      "name": "箭头-copy-copy",
+      "font_class": "arrow-up",
+      "unicode": "eaf5",
+      "unicode_decimal": 60149
+    },
+    {
+      "icon_id": "5800661",
+      "name": "菜单",
+      "font_class": "caidan1",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "8706377",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "41343215",
+      "name": "箭头-copy",
+      "font_class": "arrow-right",
+      "unicode": "eaf2",
+      "unicode_decimal": 60146
+    },
+    {
+      "icon_id": "41343218",
+      "name": "箭头-copy-copy",
+      "font_class": "arrow-left",
+      "unicode": "eaf3",
+      "unicode_decimal": 60147
+    },
+    {
+      "icon_id": "41343219",
+      "name": "箭头-copy-copy-copy",
+      "font_class": "arrow-down",
+      "unicode": "eaf4",
+      "unicode_decimal": 60148
+    },
+    {
       "icon_id": "5387521",
       "name": "菜单",
       "font_class": "caidan",
