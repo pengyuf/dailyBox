@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "14488541",
+      "name": "图片、图库",
+      "font_class": "ziyuan116",
+      "unicode": "e789",
+      "unicode_decimal": 59273
+    },
+    {
+      "icon_id": "16921558",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e7eb",
+      "unicode_decimal": 59371
+    },
+    {
+      "icon_id": "23513629",
+      "name": "夜间模式",
+      "font_class": "yejianmoshi",
+      "unicode": "e872",
+      "unicode_decimal": 59506
+    },
+    {
       "icon_id": "41343220",
       "name": "箭头-copy-copy",
       "font_class": "arrow-up",

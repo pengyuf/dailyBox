@@ -1,6 +1,8 @@
-@import './var.scss';
+$bg-page: #F1F5FB;
 
 html,body{
+    background: $bg-page;
     margin: 0;
     padding: 0;
+    font-size: 14px;
 }
