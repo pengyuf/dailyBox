@@ -5,5 +5,6 @@ export const SERVICE = {
     user: '/users',
     auth: '/auth',
     daily: '/dailys',
-    sources: '/sources'
+    sources: '/sources',
+    upload:'/upload'
 }
