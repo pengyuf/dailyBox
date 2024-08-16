@@ -17,8 +17,8 @@ import { checkRequest, errorToast } from '../utils/index'
 
 const router = useRouter()
 
-const username = ref('admin')
-const password = ref('admin')
+const username = ref('')
+const password = ref('')
 
 const submit = () => {
     if (username.value === '') {
@@ -35,6 +35,8 @@ const submit = () => {
     }).then(res => {
         if (checkRequest(res)) {
             useStorage('token', res.data.access_token)
+            useStorage('loginStatus','logining')
+            router.push({path:'/home'})
         } else {
             errorToast(res)
         }

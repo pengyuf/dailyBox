@@ -4,7 +4,7 @@ import { showNotify } from "vant";
  * @description 获取token
  */
 export function getToken() {
-    const sysToken: string = window.localStorage.getItem('sysToken') || ''
+    const sysToken: string = window.localStorage.getItem('token') || ''
     return sysToken
 }
 

@@ -14,7 +14,7 @@ axiosInstance.interceptors.request.use(
     config => {
         let token = getToken(); //　获取token
         if (token) {
-            config.headers.Authorization = 'Basic:' + token;
+            config.headers.Authorization = 'Bearer'+' '+ token;
         }
         // post方法对数据进行处理
         if (config.method == 'post' && !config.headers['Content-Type']) {

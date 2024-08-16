@@ -13,6 +13,22 @@
                 <div class="iconfont icon-caidan1 header-icon"></div>
             </div>
         </div>
+
+
+        <div class="list-box">
+            <div class="list-item" v-for="(item, index) in dailyList" :key="index">
+                <div class="time">{{ item.createdTime }}</div>
+                <div class="img-box" v-if="item.sources.source1">
+                    <img :src="item.sources.source1" />
+                </div>
+                <div class="content">{{ item.content }}</div>
+                <div class="address">{{ item.address || '' }}</div>
+            </div>
+        </div>
+
+
+
+
         <div class="fix-editor" @click="toEditorPage('add')">
             <img src="@/assets/img/editor.png">
         </div>
@@ -23,8 +39,8 @@
                 <div class="img-wrapper">
                     <img class="daily-img" src="@/assets/img/daily.png" />
                 </div>
-                <div class="header-menu">账号信息</div>
-                <div class="header-menu" @click="toLogin">登录账号</div>
+                <div class="header-menu" v-if="loginStatus">账号信息</div>
+                <div class="header-menu" @click="toLogin" v-else>登录账号</div>
                 <div class="menu-card">
                     <div class="card-item" @click="toSourceList">
                         <div class="iconfont icon-ziyuan116 side-menu-icon"></div>
@@ -48,14 +64,36 @@
 </template>
 
 <script lang="ts" setup>
+import { dailyAPI } from '@/request/api/dailys';
+import { useStorage } from '@vueuse/core';
+import { onMounted } from 'vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { checkRequest, errorToast } from '../utils';
 
 
 const router = useRouter()
 
-const showSideMenu = ref(true)
+const showSideMenu = ref(false)
 const dark = ref(false)
+
+const loginStatus = useStorage('loginStatus', '')
+
+const dailyList: any = ref([])
+
+onMounted(() => {
+    queryDailys()
+})
+
+const queryDailys = () => {
+    dailyAPI.list().then(res => {
+        if (checkRequest(res)) {
+            dailyList.value = res.data
+        } else {
+            errorToast(res)
+        }
+    })
+}
 
 const toEditorPage = (formType: string) => {
     router.push({ path: '/editor', query: { formType } })
@@ -99,6 +137,43 @@ const toLogin = () => {
         .time-wrapper {
             font-size: 25px;
             margin-right: 5px;
+        }
+    }
+}
+
+.list-box {
+    padding: 15px;
+    box-sizing: border-box;
+
+    .list-item {
+        background: #fff;
+        padding: 15px;
+        box-sizing: border-box;
+        border-radius: 15px;
+        margin-bottom: 15px;
+
+        .time {
+            color: #A0AAB6;
+        }
+
+        .content {
+            color: #2E3F5D;
+        }
+
+        .address {
+            text-align: right;
+            color: #A0AAB6;
+        }
+
+        .img-box {
+            height: 300px;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
         }
     }
 }
@@ -166,4 +241,5 @@ const toLogin = () => {
             }
         }
     }
-}</style>
+}
+</style>

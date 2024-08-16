@@ -11,8 +11,8 @@ const suffix_url = {
 }
 
 export const dailyAPI = {
-    list(param: any) {
-        return get(prefix_url + suffix_url.list, param)
+    list() {
+        return get(prefix_url + suffix_url.list)
     },
     detail(param: any) {
         return get(prefix_url + suffix_url.detail, param)
