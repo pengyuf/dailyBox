@@ -39,7 +39,7 @@
                 <div class="img-wrapper">
                     <img class="daily-img" src="@/assets/img/daily.png" />
                 </div>
-                <div class="header-menu" v-if="loginStatus">账号信息</div>
+                <div class="header-menu" v-if="loginstat == 'logining'">账号信息</div>
                 <div class="header-menu" @click="toLogin" v-else>登录账号</div>
                 <div class="menu-card">
                     <div class="card-item" @click="toSourceList">
@@ -64,12 +64,11 @@
 </template>
 
 <script lang="ts" setup>
-import { dailyAPI } from '@/request/api/dailys';
-import { useStorage } from '@vueuse/core';
+import { dailyAPI } from '../request/api/dailys';
 import { onMounted } from 'vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { checkRequest, errorToast } from '../utils';
+import { checkRequest, errorToast, getStorage } from '../utils';
 
 
 const router = useRouter()
@@ -77,7 +76,7 @@ const router = useRouter()
 const showSideMenu = ref(false)
 const dark = ref(false)
 
-const loginStatus = useStorage('loginStatus', '')
+const loginstat:any = getStorage('loginStatus')
 
 const dailyList: any = ref([])
 

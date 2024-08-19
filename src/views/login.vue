@@ -12,8 +12,7 @@ import { showToast } from "vant";
 import { authAPI } from "../request/api/auth";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { useStorage } from '@vueuse/core'
-import { checkRequest, errorToast } from '../utils/index'
+import { checkRequest, errorToast, setStorage } from '../utils/index'
 
 const router = useRouter()
 
@@ -34,8 +33,8 @@ const submit = () => {
         password: password.value
     }).then(res => {
         if (checkRequest(res)) {
-            useStorage('token', res.data.access_token)
-            useStorage('loginStatus','logining')
+            setStorage('token',res.data.access_token)
+            setStorage('loginStatus','logining')
             router.push({path:'/home'})
         } else {
             errorToast(res)

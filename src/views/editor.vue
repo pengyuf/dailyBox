@@ -19,6 +19,8 @@
 </template>
 
 <script lang="ts" setup>
+import { uploadAPI } from "@/request/api/upload";
+import axios from "axios";
 import { Uploader } from "vant";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
@@ -30,13 +32,26 @@ const formType = route.query.formType
 
 const connect = ref('123')
 
-const fileList = ref([
-  { url: 'https://fastly.jsdelivr.net/npm/@vant/assets/leaf.jpeg' },
-]);
+const fileList = ref([]);
 
-const afterRead = (file:File) => {
+const afterRead = (file: any) => {
   // 此时可以自行将文件上传至服务器
   console.log(file);
+
+  let forms = new FormData()
+  forms.append("file", file.file);
+   
+  uploadAPI.uploadImg(forms)
+  // axios
+  //   .post('http://localhost:3000/upload/image', forms, {
+  //     headers: {
+  //       "content-type": "multipart/form-data"
+  //     },
+  //   })
+
+
+
+
 };
 
 </script>

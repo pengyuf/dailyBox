@@ -81,7 +81,7 @@ export function get(url: string, params?: any): Promise<any> {
 
 export function post(url: string, params?: any, config?: any): Promise<any> {
     return new Promise((resolve, reject) => {
-        axiosInstance.post(url, qs.stringify(params), config).then(res => {
+        axiosInstance.post(url, params, config).then(res => {
             resolve(res.data)
         }).catch(err => {
             reject(err.data)

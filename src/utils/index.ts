@@ -30,3 +30,14 @@ export function checkRequest(data: any) {
 export function errorToast(res: any, explain?: string) {
     showNotify({ type: 'danger', message: `${res.message || res.msg || explain || '失败'}` });
 }
+
+
+
+
+export function setStorage(key: string, value: any) {
+    window.localStorage.setItem(key, value)
+}
+
+export function getStorage(key: string) {
+    window.localStorage.getItem(key)
+}
